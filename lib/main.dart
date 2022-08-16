@@ -1,10 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
+import 'features/app_debug.dart';
+import 'features/app_prod.dart';
 import 'features/debug_view/controllers/debug_view_controller.dart';
 
 class MyHttpOverrides extends HttpOverrides {
@@ -32,13 +35,15 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Get.put(DebugViewController());
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => DebugViewController()),
+      ],
+      child: const Visibility(
+        visible: kReleaseMode,
+        replacement: AppProd(),
+        child: AppDebug(),
       ),
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
