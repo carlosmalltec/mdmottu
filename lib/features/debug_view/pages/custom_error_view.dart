@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:mdmottu/constants/const_drawables.dart';
 import 'package:mdmottu/features/design_system/style/style_app.dart';
 
+import '../../lang/app_translation.dart';
+
 class CustomErrorView extends StatelessWidget {
   final FlutterErrorDetails? details;
   const CustomErrorView({Key? key, this.details}) : super(key: key);
@@ -22,7 +24,7 @@ class CustomErrorView extends StatelessWidget {
             children: [
               Image.asset(ConstDrawables.image404),
               Text(
-                kDebugMode ? details?.summary.toString() ?? 'Erro nulo da aplicação!' : 'Desculpe! Algo deu errado.',
+                kDebugMode ? details?.summary.toString() ?? AppTranslationString.string('failure_aplication') : AppTranslationString.string('failure_aplication'),
                 textAlign: TextAlign.center,
                 style: StyleApp.paragraphLgStrong,
               ),
@@ -31,7 +33,7 @@ class CustomErrorView extends StatelessWidget {
                 replacement: Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Text(
-                    'ocorreu um erro agora. O erro será analisado e corrigido por nossa equipe. Obrigado pela sua paciência',
+                    AppTranslationString.string('failure_aplication'),
                     style: StyleApp.paragraphLgStrong,
                   ),
                 ),
