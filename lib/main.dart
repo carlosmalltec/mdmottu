@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => HomeController()),
       ],
       child: const Visibility(
-        visible: kReleaseMode,
+        visible: kDebugMode,
         replacement: AppProd(),
         child: AppDebug(),
       ),

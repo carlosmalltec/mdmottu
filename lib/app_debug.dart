@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:mdmottu/core/navigation_state/navigator_service.dart';
+import 'package:mdmottu/features/design_system/colors/colors_app.dart';
 
+import 'features/debug_view/pages/view_logs.dart';
 import 'lang/app_translation.dart';
 import 'lang/translation_service.dart';
 import 'routes/app_pages.dart';
@@ -23,6 +26,7 @@ class _AppDebugState extends State<AppDebug> {
           MaterialApp(
             debugShowCheckedModeBanner: false,
             initialRoute: AppPages.initial,
+            navigatorKey: NavigatorService.navigatorKey,
             routes: AppPages.routes(),
             locale: TranslationService.locale,
             localizationsDelegates: const [GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate],
@@ -45,9 +49,9 @@ class _AppDebugState extends State<AppDebug> {
               alignment: Alignment.center,
               child: FloatingActionButton(
                 elevation: 0,
-                backgroundColor: Colors.blue.withOpacity(0.25),
-                onPressed: () => Navigator.pushNamed(context, Routes.logs),
-                child: Icon(Icons.build, color: Colors.white.withOpacity(0.25)),
+                backgroundColor: ColorsApp.ffCFE8A9.withOpacity(0.25),
+                onPressed: () => NavigatorService.navigatorPage(Routes.logs),
+                child: Icon(Icons.build, color: ColorsApp.ff222E50.withOpacity(0.25)),
               ),
             ),
           ),

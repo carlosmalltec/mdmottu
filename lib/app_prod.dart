@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'core/navigation_state/navigator_service.dart';
 import 'lang/app_translation.dart';
 import 'lang/translation_service.dart';
 import 'routes/app_pages.dart';
@@ -19,6 +20,7 @@ class _AppProdState extends State<AppProd> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.initial,
+      navigatorKey: NavigatorService.navigatorKey,
       routes: AppPages.routes(),
       locale: TranslationService.locale,
       localizationsDelegates: const [GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate],
