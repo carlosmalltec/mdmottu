@@ -1,4 +1,5 @@
-import 'package:mdmottu/features/lang/translation_service.dart';
+
+import 'translation_service.dart';
 
 class AppTranslationString {
   AppTranslationString._();
