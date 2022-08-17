@@ -60,10 +60,10 @@ android {
             proguardFiles getDefaultProguardFile(
             'proguard-android-optimize.txt'),
             'proguard-rules.pro'
-            signingConfig signingConfigs.config
+            signingConfig signingConfigs.debug
         }
         debug {
-            signingConfig signingConfigs.config
+            signingConfig signingConfigs.debug
         }
     }
 }
