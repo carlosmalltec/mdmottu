@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:mdmottu/features/lang/app_translation.dart';
 
-import '../routes/app_pages.dart';
-import 'debug_view/pages/custom_error_view.dart';
+import 'lang/app_translation.dart';
 import 'lang/translation_service.dart';
+import 'routes/app_pages.dart';
+import 'features/debug_view/pages/custom_error_view.dart';
 
 class AppDebug extends StatefulWidget {
   const AppDebug({Key? key}) : super(key: key);

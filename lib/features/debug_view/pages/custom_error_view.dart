@@ -2,8 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mdmottu/constants/const_drawables.dart';
 import 'package:mdmottu/features/design_system/style/style_app.dart';
+import '../../../lang/app_translation.dart';
 
-import '../../lang/app_translation.dart';
+
 
 class CustomErrorView extends StatelessWidget {
   final FlutterErrorDetails? details;
