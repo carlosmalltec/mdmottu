@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -33,8 +32,8 @@ class _AppDebugState extends State<AppDebug> {
             darkTheme: ThemeData.light(),
             themeMode: ThemeMode.light,
             builder: (BuildContext context, Widget? widget) {
-              ErrorWidget.builder = (FlutterErrorDetails details){
-                return CustomErrorView(details:details);
+              ErrorWidget.builder = (FlutterErrorDetails details) {
+                return CustomErrorView(details: details);
               };
               return widget!;
             },

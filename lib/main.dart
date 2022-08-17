@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'app_debug.dart';
 import 'app_prod.dart';
 import 'features/debug_view/controllers/debug_view_controller.dart';
+import 'features/home/presenter/controllers/home_controller.dart';
 import 'features/splash/presenter/controllers/splash_controller.dart';
 
 class MyHttpOverrides extends HttpOverrides {
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => SplashController()),
         ChangeNotifierProvider(create: (_) => DebugViewController()),
+        ChangeNotifierProvider(create: (_) => HomeController()),
       ],
       child: const Visibility(
         visible: kReleaseMode,

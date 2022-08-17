@@ -2,5 +2,5 @@
 class ConstDrawables {
   ConstDrawables._();
 
-  static const image404 = "assets/image/404.png";
+  static const image404 = "assets/images/404.png";
 }
