@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'app_debug.dart';
 import 'app_prod.dart';
 import 'features/debug_view/controllers/debug_view_controller.dart';
+import 'features/splash/presenter/controllers/splash_controller.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => SplashController()),
         ChangeNotifierProvider(create: (_) => DebugViewController()),
       ],
       child: const Visibility(
