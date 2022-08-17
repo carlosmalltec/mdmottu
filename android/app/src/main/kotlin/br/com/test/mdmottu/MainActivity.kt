@@ -12,10 +12,12 @@ import android.content.IntentFilter
 import android.os.BatteryManager
 import android.os.Build.VERSION
 import android.os.Build.VERSION_CODES
-
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity: FlutterActivity() {
     private val CHANNEL = "samples.flutter.dev/battery"
+    private val CHANHELPRINT = "samples.flutter.dev/mdprint"
 
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
@@ -34,6 +36,27 @@ class MainActivity: FlutterActivity() {
                 result.notImplemented()
             }
         }
+
+        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANHELPRINT).setMethodCallHandler {
+            // This method is invoked on the main thread.
+            call, result ->
+            if (call.method == "MdPrint") {
+                val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+                val currentDate = sdf.format(Date())
+                result.success("Entrou no print da plataforma  $currentDate")
+//                val batteryLevel = getBatteryLevel()
+//
+//                if (batteryLevel != -1) {
+//                    result.success(batteryLevel)
+//                } else {
+//                    result.error("UNAVAILABLE", "Battery level not available.", null)
+//                }
+            } else {
+                result.notImplemented()
+            }
+        }
+
+
 
     }
 

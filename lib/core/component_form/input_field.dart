@@ -99,7 +99,7 @@ class InputField extends StatelessWidget {
         decoration: InputDecoration(
           floatingLabelBehavior: FloatingLabelBehavior.always,
           counterText: '',
-           suffixIcon: visibleSuffixIcon ? _suffixIcon() : null,
+          suffixIcon: visibleSuffixIcon ? _suffixIcon() : null,
           prefixIcon: visiblePrefixIcon ? _prefixIcon() : null,
           errorText: errorText,
           hintText: hintText,
@@ -118,11 +118,7 @@ class InputField extends StatelessWidget {
         inputFormatters: inputFormatters,
         onFieldSubmitted: onFieldSubmitted,
         autovalidateMode: AutovalidateMode.onUserInteraction,
-        style: Theme.of(context).textTheme.subtitle1?.copyWith(
-              fontSize: 14,
-              fontWeight: FontWeight.w400,
-              color: Colors.grey.shade600,
-            ),
+        style: GoogleFonts.openSans(fontSize: 16.0, color: ColorsApp.ff222E50, fontWeight: FontWeight.w700),
       ),
     );
   }

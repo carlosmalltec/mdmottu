@@ -3,17 +3,32 @@ import 'package:flutter/services.dart';
 
 class HomeController extends ChangeNotifier {
   static const platform = MethodChannel('samples.flutter.dev/battery');
+  static const platformPrint = MethodChannel('samples.flutter.dev/mdprint');
+
   ValueNotifier<String> batteryLevel = ValueNotifier<String>('Nível da bateria');
+  ValueNotifier<String> valuePrintPlataform = ValueNotifier<String>('');
 
   Future<void> getBatteryLevel() async {
-    String _batteryLevel;
+    String valueBatteryLevel;
     try {
       final int result = await platform.invokeMethod('getBatteryLevel');
-      _batteryLevel = 'O nível da bateria é $result % .';
+      valueBatteryLevel = 'O nível da bateria é $result % .';
     } on PlatformException catch (e) {
-      _batteryLevel = "Falha ao tentar ler os dados da bateria: '${e.message}'.";
+      valueBatteryLevel = "Falha ao tentar ler os dados da bateria: '${e.message}'.";
     }
-    batteryLevel.value = _batteryLevel;
+    batteryLevel.value = valueBatteryLevel;
+    notifyListeners();
+  }
+
+  Future<void> getPrintPlataform() async {
+    String valuePrint;
+    try {
+      var result = await platformPrint.invokeMethod('MdPrint');
+      valuePrint = '$result';
+    } on PlatformException catch (e) {
+      valuePrint = "${e.message}";
+    }
+    valuePrintPlataform.value = valuePrint;
     notifyListeners();
   }
 }
