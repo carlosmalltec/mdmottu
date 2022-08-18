@@ -38,25 +38,15 @@ class MainActivity: FlutterActivity() {
         }
 
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, CHANHELPRINT).setMethodCallHandler {
-            // This method is invoked on the main thread.
             call, result ->
             if (call.method == "MdPrint") {
                 val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
                 val currentDate = sdf.format(Date())
                 result.success("Entrou no print da plataforma  $currentDate")
-//                val batteryLevel = getBatteryLevel()
-//
-//                if (batteryLevel != -1) {
-//                    result.success(batteryLevel)
-//                } else {
-//                    result.error("UNAVAILABLE", "Battery level not available.", null)
-//                }
             } else {
                 result.notImplemented()
             }
         }
-
-
 
     }
 

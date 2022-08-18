@@ -41,8 +41,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => SplashController()),
-        ChangeNotifierProvider(create: (_) => DebugViewController()),
         ChangeNotifierProvider(create: (_) => HomeController()),
+        ChangeNotifierProvider(create: (_) => DebugViewController()),
         ChangeNotifierProvider(create: (_) => AuthController()),
       ],
       child: const Visibility(

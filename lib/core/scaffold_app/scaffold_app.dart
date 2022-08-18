@@ -25,6 +25,7 @@ class ScaffoldApp extends StatefulWidget {
   final bool drawerEnableOpenDragGesture;
   final bool endDrawerEnableOpenDragGesture;
   final String? restorationId;
+  final  Future<bool> Function()? onWillPop;
 
   const ScaffoldApp({
     Key? key,
@@ -51,6 +52,7 @@ class ScaffoldApp extends StatefulWidget {
     this.drawerScrimColor,
     this.drawerEdgeDragWidth,
     this.restorationId,
+    this.onWillPop,
   }) : super(key: key);
 
   @override
@@ -60,31 +62,34 @@ class ScaffoldApp extends StatefulWidget {
 class _ScaffoldAppState extends State<ScaffoldApp> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: widget.key,
-      appBar: widget.appBar,
-      body: widget.body,
-      floatingActionButton: widget.floatingActionButton,
-      floatingActionButtonLocation: widget.floatingActionButtonLocation,
-      floatingActionButtonAnimator: widget.floatingActionButtonAnimator,
-      persistentFooterButtons: widget.persistentFooterButtons,
-      drawer: widget.drawer,
-      onDrawerChanged: widget.onDrawerChanged,
-      endDrawer: widget.endDrawer,
-      onEndDrawerChanged: widget.onEndDrawerChanged,
-      bottomNavigationBar: widget.bottomNavigationBar,
-      bottomSheet: widget.bottomSheet,
-      backgroundColor: widget.backgroundColor,
-      resizeToAvoidBottomInset: widget.resizeToAvoidBottomInset,
-      primary: widget.primary,
-      extendBody: widget.extendBody,
-      extendBodyBehindAppBar: widget.extendBodyBehindAppBar,
-      drawerEnableOpenDragGesture: widget.drawerEnableOpenDragGesture,
-      endDrawerEnableOpenDragGesture: widget.endDrawerEnableOpenDragGesture,
-      drawerDragStartBehavior: widget.drawerDragStartBehavior,
-      drawerScrimColor: widget.drawerScrimColor,
-      drawerEdgeDragWidth: widget.drawerEdgeDragWidth,
-      restorationId: widget.restorationId,
+    return WillPopScope(
+      onWillPop: widget.onWillPop ?? () async => await Future.value(false),
+      child: Scaffold(
+        key: widget.key,
+        appBar: widget.appBar,
+        body: widget.body,
+        floatingActionButton: widget.floatingActionButton,
+        floatingActionButtonLocation: widget.floatingActionButtonLocation,
+        floatingActionButtonAnimator: widget.floatingActionButtonAnimator,
+        persistentFooterButtons: widget.persistentFooterButtons,
+        drawer: widget.drawer,
+        onDrawerChanged: widget.onDrawerChanged,
+        endDrawer: widget.endDrawer,
+        onEndDrawerChanged: widget.onEndDrawerChanged,
+        bottomNavigationBar: widget.bottomNavigationBar,
+        bottomSheet: widget.bottomSheet,
+        backgroundColor: widget.backgroundColor,
+        resizeToAvoidBottomInset: widget.resizeToAvoidBottomInset,
+        primary: widget.primary,
+        extendBody: widget.extendBody,
+        extendBodyBehindAppBar: widget.extendBodyBehindAppBar,
+        drawerEnableOpenDragGesture: widget.drawerEnableOpenDragGesture,
+        endDrawerEnableOpenDragGesture: widget.endDrawerEnableOpenDragGesture,
+        drawerDragStartBehavior: widget.drawerDragStartBehavior,
+        drawerScrimColor: widget.drawerScrimColor,
+        drawerEdgeDragWidth: widget.drawerEdgeDragWidth,
+        restorationId: widget.restorationId,
+      ),
     );
   }
 }

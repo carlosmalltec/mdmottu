@@ -94,7 +94,7 @@ class InputField extends StatelessWidget {
         minLines: minLines,
         enabled: enabled,
         autofocus: autofocus,
-        cursorColor: ColorsApp.ffC21010,
+        cursorColor: ColorsApp.ff222E50,
         obscureText: obscureText,
         decoration: InputDecoration(
           floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -105,7 +105,6 @@ class InputField extends StatelessWidget {
           hintText: hintText,
           labelText: !fieldRequired ? labelText ?? '' : null,
           label: fieldRequired ? wi(labelText ?? '') : null,
-          // labelStyle: labelStyle,
         ),
         onChanged: onChanged,
         onTap: onTap,
@@ -118,7 +117,6 @@ class InputField extends StatelessWidget {
         inputFormatters: inputFormatters,
         onFieldSubmitted: onFieldSubmitted,
         autovalidateMode: AutovalidateMode.onUserInteraction,
-        style: GoogleFonts.openSans(fontSize: 16.0, color: ColorsApp.ff222E50, fontWeight: FontWeight.w700),
       ),
     );
   }
