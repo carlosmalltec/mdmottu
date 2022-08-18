@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:mdmottu/features/design_system/temes/theme_data_default.dart';
 
 import 'core/navigation_state/navigator_service.dart';
 import 'core/theme_preference/theme_model.dart';
@@ -35,7 +36,7 @@ class _AppProdState extends State<AppProd> {
           localizationsDelegates: const [GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate],
           supportedLocales: const [Locale("pt", "BR"), Locale("es", "ES"), Locale("en", "US")],
           title: AppTranslationString.string('company_name'),
-          theme: themeNotifier.isDark ? ThemeData.dark() : ThemeData.light(),
+          theme: themeDataDefault,
           builder: (BuildContext context, Widget? widget) {
             ErrorWidget.builder = (FlutterErrorDetails details) {
               return CustomErrorView(details: details);

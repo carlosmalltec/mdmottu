@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mdmottu/core/navigation_state/navigator_service.dart';
 import 'package:mdmottu/core/scaffold_app/scaffold_app.dart';
 import 'package:mdmottu/core/theme_preference/theme_model.dart';
 import 'package:mdmottu/features/design_system/colors/colors_app.dart';
+import 'package:mdmottu/routes/app_pages.dart';
 
 import '../../../../core/responsive/responsive_builder.dart';
 import '../../../../dependency_injections/service_locator.dart';
@@ -30,19 +32,6 @@ class _HomePhoneState extends State<HomePhone> {
         ),
         centerTitle: true,
         leading: Container(),
-        actions: [
-          AnimatedBuilder(
-            animation: themeModel,
-            builder: (BuildContext context, Widget? widget) {
-              return IconButton(
-                icon: Icon(themeModel.isDark ? Icons.nightlight_round : Icons.wb_sunny),
-                onPressed: () {
-                  themeModel.isDark ? themeModel.isDark = false : themeModel.isDark = true;
-                },
-              );
-            },
-          )
-        ],
       ),
       body: ResponsiveBuilder(builder: (context, view) {
         return Container(
@@ -91,7 +80,7 @@ class _HomePhoneState extends State<HomePhone> {
                   Expanded(
                     child: Card(
                       child: ListTile(
-                        onTap: () {},
+                        onTap: () => NavigatorService.navigatorPage(Routes.auth),
                         title: const Text('Login'),
                         subtitle: const Text('Página de login'),
                       ),
@@ -100,18 +89,61 @@ class _HomePhoneState extends State<HomePhone> {
                   Expanded(
                     child: Card(
                       child: ListTile(
-                        onTap: () {},
-                        title: const Text('Lista'),
+                        onTap: () => NavigatorService.navigatorPage(Routes.character),
+                        title: const Text('Lista dos personagens'),
                         subtitle: const Text('Leitura da API'),
                       ),
                     ),
                   )
                 ],
               ),
+              SizedBox(
+                // height: 600,
+                child: Card(
+                  child: ListTile(
+                    title: const Text('Temas disponíveis'),
+                    subtitle: AnimatedBuilder(
+                        animation: themeModel,
+                        builder: (BuildContext context, Widget? widget) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              const Text('Escolha uma cor de tema'),
+                              const Divider(height: 40),
+                              Wrap(
+                                spacing: 5,
+                                runSpacing: 5,
+                                children: [
+                                  _button(ColorsApp.ffFF7C7C, 0, 'Tema 0'),
+                                  _button(ColorsApp.ff820000, 1, 'Tema 1'),
+                                  _button(ColorsApp.ff554994, 2, 'Tema 2'),
+                                  _button(ColorsApp.ff80558C, 3, 'Tema 3'),
+                                  _button(ColorsApp.ff100720, 4, 'Tema 4'),
+                                ],
+                              ),
+                            ],
+                          );
+                        }),
+                  ),
+                ),
+              ),
+              const Divider(height: 30),
             ],
           ),
         );
       }),
+    );
+  }
+
+  _button(Color color, int index, String nameButton) {
+    return TextButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(color),
+        padding: MaterialStateProperty.all(const EdgeInsets.all(20)),
+      ),
+      onPressed: () => themeModel.setThemeData(index),
+      child: Text(nameButton, style: Theme.of(context).textTheme.displayMedium),
     );
   }
 }

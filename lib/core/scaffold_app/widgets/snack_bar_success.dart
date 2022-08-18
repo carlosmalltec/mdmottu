@@ -20,13 +20,13 @@ SnackBar snackBarSuccess({String text = 'sucess_network'}) => SnackBar(
       ),
     );
 
-SnackBar snackBarWarning() => SnackBar(
+SnackBar snackBarWarning({String text = 'failure_network'}) => SnackBar(
       backgroundColor: ColorsApp.ffC21010,
       duration: const Duration(seconds: 5),
       behavior: SnackBarBehavior.floating,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       content: Text(
-        AppTranslationString.string('failure_network'),
+        AppTranslationString.string(text),
         style: Theme.of(NavigatorService.navigatorKey.currentContext!).textTheme.titleMedium?.copyWith(
               color: ColorsApp.ffFFFFFF,
               fontWeight: FontWeight.w700,

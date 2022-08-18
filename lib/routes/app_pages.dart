@@ -3,6 +3,7 @@ import 'package:mdmottu/features/auth/presenter/auth_screen.dart';
 import 'package:mdmottu/features/home/presenter/home_screen.dart';
 import 'package:mdmottu/features/splash/presenter/splash_screen.dart';
 
+import '../features/character/presenter/character_screen.dart';
 import '../features/debug_view/pages/view_logs.dart';
 
 part 'app_routes.dart';
@@ -15,5 +16,6 @@ class AppPages {
         Routes.home: (context) => const HomeScreen(),
         Routes.logs: (context) => const ViewLogs(),
         Routes.auth: (context) => const AuthScreen(),
+        Routes.character: (context) => const CharacterScreen(),
       };
 }

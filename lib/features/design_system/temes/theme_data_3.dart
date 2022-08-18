@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mdmottu/features/design_system/colors/colors_app.dart';
 
-ThemeData themeDataDefault = ThemeData(
+ThemeData themeData3 = ThemeData(
   fontFamily: GoogleFonts.openSans().fontFamily,
   scaffoldBackgroundColor: Colors.grey.shade300,
-  primaryColor: ColorsApp.ffFF7C7C,
+  primaryColor: ColorsApp.ff80558C,
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: ColorsApp.createMaterialColor(ColorsApp.ffFF7C7C),
+    primarySwatch: ColorsApp.createMaterialColor(ColorsApp.ff80558C),
   ).copyWith(
-    secondary: ColorsApp.ffFF7C7C,
-    primary: ColorsApp.ffFF7C7C,
+    secondary: ColorsApp.ff80558C,
+    primary: ColorsApp.ff80558C,
   ),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,

@@ -27,6 +27,7 @@ class _AppDebugState extends State<AppDebug> {
     return AnimatedBuilder(
       animation: themeNotifier,
       builder: (BuildContext context, Widget? widget) {
+        print('themeNotifier.themeDefault ${themeNotifier.themeDefault}');
         return Directionality(
           textDirection: TextDirection.ltr,
           child: Stack(
@@ -42,7 +43,7 @@ class _AppDebugState extends State<AppDebug> {
                 supportedLocales: const [Locale("pt", "BR"), Locale("es", "ES"), Locale("en", "US")],
                 title: AppTranslationString.string('company_name'),
                 // theme: themeNotifier.isDark ? ThemeData.dark() : ThemeData.light(),
-                theme: themeDataDefault,
+                theme: themeNotifier.listThemesData[themeNotifier.themeDefault],
                 builder: (BuildContext context, Widget? widget) {
                   ErrorWidget.builder = (FlutterErrorDetails details) {
                     return CustomErrorView(details: details);

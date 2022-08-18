@@ -1,9 +1,12 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/material.dart';
 
-mixin CheckConnectingNetwork {
+class CheckConnectingNetwork extends ChangeNotifier {
   Future<bool> appCheckConnectivity() async {
-    var _conn = await (Connectivity().checkConnectivity());
-    bool isDeviceConnected = _conn != ConnectivityResult.none;
-    return isDeviceConnected;
+    bool connected = false;
+    ConnectivityResult conn = await (Connectivity().checkConnectivity());
+    if (conn != ConnectivityResult.none) connected = true;
+    notifyListeners();
+    return connected;
   }
 }
