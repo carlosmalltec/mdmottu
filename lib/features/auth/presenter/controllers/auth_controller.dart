@@ -33,7 +33,7 @@ class AuthController extends ChangeNotifier {
 
     await Future.delayed(const Duration(seconds: 1));
 
-    if (data.login == 'teste@teste.com' && data.password == '123') {
+    if (data.login == 'teste@teste.com' && data.password.toString() == '123') {
       item = item.copyWith(type: 'RESPONSE',statusCode: '200', body: 'Login com sucesso');
       debugViewController.addLog(item);
     } else {

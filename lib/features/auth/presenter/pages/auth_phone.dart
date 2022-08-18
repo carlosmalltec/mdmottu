@@ -57,7 +57,7 @@ class _AuthPhoneState extends State<AuthPhone> {
               InputField(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 maxLength: 100,
-                // autofocus: true,
+                autofocus: true,
                 hintText: AppTranslationString.string('login_hint'),
                 controller: loginEC,
                 focusNode: loginFN,
@@ -79,26 +79,26 @@ class _AuthPhoneState extends State<AuthPhone> {
                 controller: passEC,
                 focusNode: passFN,
                 labelText: AppTranslationString.string('pass_label'),
-                hintText: AppTranslationString.string('pass_label'),
-                // keyboardType: TextInputType.visiblePassword,
-                // textInputAction: TextInputAction.done,
-                // obscureText: !_controller.visiblePassword.value,
-                // visibleSuffixIcon: true,
-                // enabled: !_controller.loading.value,
-                // suffixIconWidget: Visibility(
-                //   visible: _controller.visiblePassword.value,
-                //   replacement: const Icon(Icons.visibility_off_outlined, color: ColorsApp.ff222E50),
-                //   child: const Icon(Icons.visibility_outlined, color: ColorsApp.ff222E50),
-                // ),
-                // onPressedSuffixIcon: () => _controller.visiblePasswordShow(),
-                // onSaved: (data) {
-                //   if (data != null) {
-                //     requestAuth = requestAuth.copyWith(password: data.toLowerCase());
-                //   }
-                // },
-                // validator: Validators.multiple([
-                //   Validators.required(),
-                // ]),
+                hintText: AppTranslationString.string('pass_hint'),
+                keyboardType: TextInputType.visiblePassword,
+                textInputAction: TextInputAction.done,
+                obscureText: !_controller.visiblePassword.value,
+                visibleSuffixIcon: true,
+                enabled: !_controller.loading.value,
+                suffixIconWidget: Visibility(
+                  visible: _controller.visiblePassword.value,
+                  replacement: const Icon(Icons.visibility_off_outlined, color: ColorsApp.ff222E50),
+                  child: const Icon(Icons.visibility_outlined, color: ColorsApp.ff222E50),
+                ),
+                onPressedSuffixIcon: () => _controller.visiblePasswordShow(),
+                onSaved: (data) {
+                  if (data != null) {
+                    requestAuth = requestAuth.copyWith(password: data.toLowerCase());
+                  }
+                },
+                validator: Validators.multiple([
+                  Validators.required(),
+                ]),
               ),
               const SizedBox(height: 20),
               const BoxTextHelper(text: 'Login: ', description: 'teste@teste.com'),
