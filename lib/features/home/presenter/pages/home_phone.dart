@@ -3,6 +3,7 @@ import 'package:mdmottu/core/scaffold_app/scaffold_app.dart';
 import 'package:mdmottu/core/theme_preference/theme_model.dart';
 import 'package:mdmottu/features/design_system/colors/colors_app.dart';
 
+import '../../../../core/responsive/responsive_builder.dart';
 import '../../../../dependency_injections/service_locator.dart';
 import '../controllers/home_controller.dart';
 
@@ -43,75 +44,74 @@ class _HomePhoneState extends State<HomePhone> {
           )
         ],
       ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ValueListenableBuilder(
-                valueListenable: _controller.batteryLevel,
-                builder: (_, String level, child) {
+      body: ResponsiveBuilder(builder: (context, view) {
+        return Container(
+          height: view.localWidgetSize?.height,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+          child: ListView(
+            children: [
+              ValueListenableBuilder(
+                  valueListenable: _controller.batteryLevel,
+                  builder: (_, String level, child) {
+                    return Card(
+                      child: ListTile(
+                        onTap: () async => await _controller.getBatteryLevel(),
+                        leading: const Icon(Icons.battery_charging_full),
+                        title: const Text('Informações da bateria, clique!'),
+                        subtitle: Text(level),
+                      ),
+                    );
+                  }),
+              ValueListenableBuilder(
+                valueListenable: _controller.valuePrintPlataform,
+                builder: (_, String print, child) {
                   return Card(
                     child: ListTile(
-                      onTap: () async => await _controller.getBatteryLevel(),
-                      leading: const Icon(Icons.battery_charging_full),
-                      title: const Text('Informações da bateria, clique!'),
-                      subtitle: Text(level),
+                      onTap: () async => await _controller.getPrintPlataform(),
+                      leading: const Icon(Icons.info_outline),
+                      title: const Text('Função para print, clique!'),
+                      subtitle: Text(print),
                     ),
                   );
-                }),
-            ValueListenableBuilder(
-              valueListenable: _controller.valuePrintPlataform,
-              builder: (_, String print, child) {
-                return Card(
+                },
+              ),
+              const Divider(height: 30),
+              const SizedBox(
+                height: 100,
+                child: Card(
                   child: ListTile(
-                    onTap: () async => await _controller.getPrintPlataform(),
-                    leading: const Icon(Icons.info_outline),
-                    title: const Text('Função para print, clique!'),
-                    subtitle: Text(print),
-                  ),
-                );
-              },
-            ),
-            const Divider(height: 30),
-            Row(
-              children: const [
-                Expanded(
-                  child: Card(
-                    child: ListTile(
-                      title: Text('Teste de internet'),
-                      subtitle: Text('Altere para modo de avião e ligue novamente!'),
-                    ),
+                    title: Text('Teste de internet'),
+                    subtitle: Text('Altere para modo de avião e ligue novamente!'),
                   ),
                 ),
-              ],
-            ),
-            const Divider(height: 30),
-            Row(
-              children: [
-                Expanded(
-                  child: Card(
-                    child: ListTile(
-                      onTap: () {},
-                      title: const Text('Login'),
-                      subtitle: const Text('Página de login'),
+              ),
+              const Divider(height: 30),
+              Row(
+                children: [
+                  Expanded(
+                    child: Card(
+                      child: ListTile(
+                        onTap: () {},
+                        title: const Text('Login'),
+                        subtitle: const Text('Página de login'),
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: Card(
-                    child: ListTile(
-                      onTap: () {},
-                      title: const Text('Lista'),
-                      subtitle: const Text('Leitura da API'),
+                  Expanded(
+                    child: Card(
+                      child: ListTile(
+                        onTap: () {},
+                        title: const Text('Lista'),
+                        subtitle: const Text('Leitura da API'),
+                      ),
                     ),
-                  ),
-                )
-              ],
-            ),
-          ],
-        ),
-      ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 }
