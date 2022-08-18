@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mdmottu/lang/en_US.dart';
+import 'package:mdmottu/lang/pt_BR.dart';
 
-import 'en_us.dart';
-import 'pt_br.dart';
 
 class TranslationService {
   static Locale? get locale => const Locale('pt','BR');
