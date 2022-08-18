@@ -1,7 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:mdmottu/core/navigation_state/navigator_service.dart';
+import 'package:mdmottu/features/design_system/colors/colors_app.dart';
+import 'package:mdmottu/features/design_system/temes/theme_data_default.dart';
+import 'package:provider/provider.dart';
 
+import 'core/theme_preference/theme_model.dart';
 import 'lang/app_translation.dart';
 import 'lang/translation_service.dart';
 import 'routes/app_pages.dart';
@@ -17,42 +21,49 @@ class AppDebug extends StatefulWidget {
 class _AppDebugState extends State<AppDebug> {
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.ltr,
-      child: Stack(
-        children: [
-          MaterialApp(
-            debugShowCheckedModeBanner: false,
-            initialRoute: AppPages.initial,
-            routes: AppPages.routes(),
-            locale: TranslationService.locale,
-            localizationsDelegates: const [GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate],
-            supportedLocales: const [Locale("pt", "BR"), Locale("es", "ES"), Locale("en", "US")],
-            title: AppTranslationString.string('company_name'),
-            theme: ThemeData.light(),
-            darkTheme: ThemeData.light(),
-            themeMode: ThemeMode.light,
-            builder: (BuildContext context, Widget? widget) {
-              ErrorWidget.builder = (FlutterErrorDetails details){
-                return CustomErrorView(details:details);
-              };
-              return widget!;
-            },
-          ),
-          Positioned(
-            right: 100,
-            top: 40,
-            child: Align(
-              alignment: Alignment.center,
-              child: FloatingActionButton(
-                elevation: 0,
-                backgroundColor: Colors.blue.withOpacity(0.25),
-                onPressed: () => Navigator.pushNamed(context, Routes.logs),
-                child: Icon(Icons.build, color: Colors.white.withOpacity(0.25)),
-              ),
+    return ChangeNotifierProvider(
+      create: (_) => ThemeModel(),
+      child: Consumer<ThemeModel>(
+        builder: (context, ThemeModel themeNotifier, child) {
+          return Directionality(
+            textDirection: TextDirection.ltr,
+            child: Stack(
+              children: [
+                MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  initialRoute: AppPages.initial,
+                  navigatorKey: NavigatorService.navigatorKey,
+                  routes: AppPages.routes(),
+                  locale: TranslationService.locale,
+                  localizationsDelegates: const [GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate],
+                  supportedLocales: const [Locale("pt", "BR"), Locale("es", "ES"), Locale("en", "US")],
+                  title: AppTranslationString.string('company_name'),
+                  // theme: themeNotifier.isDark ? ThemeData.dark() : ThemeData.light(),
+                  theme: themeDataDefault,
+                  builder: (BuildContext context, Widget? widget) {
+                    ErrorWidget.builder = (FlutterErrorDetails details) {
+                      return CustomErrorView(details: details);
+                    };
+                    return widget!;
+                  },
+                ),
+                Positioned(
+                  right: 100,
+                  top: 40,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: FloatingActionButton(
+                      elevation: 0,
+                      backgroundColor: ColorsApp.ffCFE8A9.withOpacity(0.25),
+                      onPressed: () => NavigatorService.navigatorPage(Routes.logs),
+                      child: Icon(Icons.build, color: ColorsApp.ff222E50.withOpacity(0.25)),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }

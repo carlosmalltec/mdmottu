@@ -8,7 +8,9 @@ import 'package:provider/provider.dart';
 
 import 'app_debug.dart';
 import 'app_prod.dart';
+import 'features/auth/presenter/controllers/auth_controller.dart';
 import 'features/debug_view/controllers/debug_view_controller.dart';
+import 'features/home/presenter/controllers/home_controller.dart';
 import 'features/splash/presenter/controllers/splash_controller.dart';
 
 class MyHttpOverrides extends HttpOverrides {
@@ -39,10 +41,12 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => SplashController()),
+        ChangeNotifierProvider(create: (_) => HomeController()),
         ChangeNotifierProvider(create: (_) => DebugViewController()),
+        ChangeNotifierProvider(create: (_) => AuthController()),
       ],
       child: const Visibility(
-        visible: kReleaseMode,
+        visible: kDebugMode,
         replacement: AppProd(),
         child: AppDebug(),
       ),

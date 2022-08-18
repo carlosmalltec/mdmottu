@@ -26,6 +26,31 @@ class DebugLogItem {
     this.dataPost,
   });
 
+  DebugLogItem copyWith({
+    String? type,
+    String? method,
+    String? path,
+    String? baseUrl,
+    String? body,
+    String? dataPost,
+    String? headers,
+    String? statusCode,
+    String? errorStatusMessage,
+    String? queryParameters,
+  }) =>
+      DebugLogItem(
+        type: type ?? this.type,
+        method: method ?? this.method,
+        path: path ?? this.path,
+        baseUrl: baseUrl ?? this.baseUrl,
+        body: body ?? this.body,
+        dataPost: dataPost ?? this.dataPost,
+        headers: headers ?? this.headers,
+        statusCode: statusCode ?? this.statusCode,
+        errorStatusMessage: errorStatusMessage ?? this.errorStatusMessage,
+        queryParameters: queryParameters ?? this.queryParameters,
+      );
+
   static List<MapEntry<String, String>> _formatDataFields(dynamic data) {
     List<MapEntry<String, String>> _formData = <MapEntry<String, String>>[];
     if (data != null) {

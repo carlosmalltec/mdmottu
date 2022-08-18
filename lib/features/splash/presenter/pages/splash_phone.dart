@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mdmottu/features/design_system/colors/colors_app.dart';
 import 'package:mdmottu/features/design_system/style/style_app.dart';
 import 'package:mdmottu/lang/app_translation.dart';
 
@@ -13,12 +14,12 @@ class SplashPhone extends StatefulWidget {
 }
 
 class _SplashPhoneState extends State<SplashPhone> {
-
   @override
   void initState() {
-  widget.controller.redirect(context);
+    widget.controller.redirect(context);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +29,13 @@ class _SplashPhoneState extends State<SplashPhone> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Hero(tag: 'logo', child: Icon(Icons.home)),
+            const Hero(
+                tag: 'logo',
+                child: Icon(
+                  Icons.adb_outlined,
+                  size: 80,
+                  color: ColorsApp.ffCFE8A9,
+                )),
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: const SizedBox(
@@ -37,7 +44,7 @@ class _SplashPhoneState extends State<SplashPhone> {
                 child: CircularProgressIndicator(strokeWidth: 1),
               ),
             ),
-            Text(AppTranslationString.string('text_splash'), style: StyleApp.paragraphLgStrong),
+            Text(AppTranslationString.string('text_splash'), style: StyleApp.paragraphMdRegular),
           ],
         ),
       ),

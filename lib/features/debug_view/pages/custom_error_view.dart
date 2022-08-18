@@ -27,7 +27,7 @@ class CustomErrorView extends StatelessWidget {
               Text(
                 kDebugMode ? details?.summary.toString() ?? AppTranslationString.string('failure_aplication') : AppTranslationString.string('failure_aplication'),
                 textAlign: TextAlign.center,
-                style: StyleApp.paragraphLgStrong,
+                style: StyleApp.caption,
               ),
               Visibility(
                 visible: kDebugMode,
@@ -35,7 +35,7 @@ class CustomErrorView extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 10),
                   child: Text(
                     AppTranslationString.string('failure_aplication'),
-                    style: StyleApp.paragraphLgStrong,
+                    style: StyleApp.caption,
                   ),
                 ),
                 child: const SizedBox.shrink(),
