@@ -1,6 +1,20 @@
-const Map<String, String> en_US = {
-  'nameApp': 'Medicina Direta',
-  'theme': 'tema escuro ou claro',
-  'awaitFromAuthenticationOrHome': 'Aguarde para ser redirecionado',
-  'requiredField': 'Campo obrigatório.'
+const Map<String, String> pt_BR = {
+  "company_name": "Empresa de Teste LTDA",
+  "failure_aplication": "ocorreu um erro agora. O erro será analisado e corrigido por nossa equipe. Obrigado pela sua paciência",
+  "text_splash": "Aguarde... estamos direcionado para home!",
+  "login_hint": "Informe seu e-mail de acesso",
+  "login_label": "Usuário",
+  "pass_hint": "Informe sua senha de acesso",
+  "pass_label": "Senha",
+  "required_field": "Campo obrigatório",
+  "mail_invalid": "Informe um e-mail valido!",
+  "failure_network": "Problemas de conexão a internet.",
+  "sucess_network": "Conexão com a internet estabelecida.",
+  "sucess_network_wifi": "Conexão com o Wifi estabelecida.",
+  "sucess_network_internet": "Conexão com os dados móveis estabelecida.",
+  "failure_status_message": "Oops! No momento o servidor encontra-se em manutenção, aguarde...",
+  "not_hash_data": "Oops! Nenhum dado encontrado, tente novamente!",
+  "title_page_personal": "Lista de personagens",
+  "message_list_all_items": "Todos os itens já foram listados",
+  "message_problem_list_data_server": "No momento não será possível listar os dados da requisição, tente novamente!",
 };

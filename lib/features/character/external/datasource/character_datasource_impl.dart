@@ -42,17 +42,4 @@ class CharacterDatasourceImpl implements CharacterDatasource {
       );
     }
   }
-
-  // @override
-  // Future<ResponseExamsExt> findAllExamsDatasource(int pacientId, QueryParameters parameters) async {
-  //   try {
-  //     final response = await _network.get(AppUrl.findAllExamsPatientId(pacientId), isAuth: true, body: parameters);
-  //     if (response.statusCode == null) return ResponseExamsExt.fromMap(statusCode: STATUS_CODE_DEFAULT, data: const [], statusMessage: STATUS_MESSAGE_DEFAULT);
-  //     var statusMessage = response.statusMessage ?? STATUS_MESSAGE_DEFAULT;
-  //     var statusCode = response.statusCode ?? STATUS_CODE_DEFAULT;
-  //     return ResponseExamsExt.fromMap(statusCode: statusCode, data: response.data, statusMessage: statusMessage);
-  //   } catch (e) {
-  //     return ResponseExamsExt.fromMap(statusCode: STATUS_CODE_DEFAULT, data: const [], statusMessage: e.toString());
-  //   }
-  // }
 }
