@@ -44,6 +44,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => HomeController()),
         ChangeNotifierProvider(create: (_) => DebugViewController()),
         ChangeNotifierProvider(create: (_) => AuthController()),
+
+        // ChangeNotifierProvider<DebugViewController>.value(
+        //     value: DebugViewController(),
+        //     ),
       ],
       child: const Visibility(
         visible: kDebugMode,

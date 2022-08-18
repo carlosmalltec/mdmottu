@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:mdmottu/core/navigation_state/navigator_service.dart';
+import 'package:mdmottu/core/scaffold_app/scaffold_app.dart';
 import 'package:mdmottu/core/theme_preference/theme_model.dart';
 import 'package:mdmottu/features/design_system/colors/colors_app.dart';
-import 'package:mdmottu/features/design_system/style/style_app.dart';
-import 'package:mdmottu/routes/app_pages.dart';
 import 'package:provider/provider.dart';
 
 import '../controllers/home_controller.dart';
@@ -23,64 +20,85 @@ class _HomePhoneState extends State<HomePhone> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ThemeModel>(
-      builder: (context, ThemeModel themeNotifier, child) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              themeNotifier.isDark ? "Home Dark Mode" : "Home Light Mode",
+    return ScaffoldApp(
+      appBar: AppBar(
+        title: Text(
+          "Home",
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(color: ColorsApp.ffFFFFFF),
+        ),
+        centerTitle: true,
+        leading: Container(),
+        actions: [
+          Consumer<ThemeModel>(
+            builder: (context, ThemeModel themeNotifier, child) {
+              return IconButton(
+                icon: Icon(themeNotifier.isDark ? Icons.nightlight_round : Icons.wb_sunny),
+                onPressed: () {
+                  themeNotifier.isDark ? themeNotifier.isDark = false : themeNotifier.isDark = true;
+                },
+              );
+            },
+          )
+        ],
+      ),
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ValueListenableBuilder(
+                valueListenable: _controller.batteryLevel,
+                builder: (_, String level, child) {
+                  return Card(
+                    child: ListTile(
+                      onTap: () async => await _controller.getBatteryLevel(),
+                      leading: const Icon(Icons.battery_charging_full),
+                      title: const Text('Informações da bateria, clique!'),
+                      subtitle: Text(level),
+                    ),
+                  );
+                }),
+            ValueListenableBuilder(
+              valueListenable: _controller.valuePrintPlataform,
+              builder: (_, String print, child) {
+                return Card(
+                  child: ListTile(
+                    onTap: () async => await _controller.getPrintPlataform(),
+                    leading: const Icon(Icons.info_outline),
+                    title: const Text('Função para print, clique!'),
+                    subtitle: Text(print),
+                  ),
+                );
+              },
             ),
-            centerTitle: true,
-            actions: [
-              IconButton(
-                  icon: Icon(themeNotifier.isDark ? Icons.nightlight_round : Icons.wb_sunny),
-                  onPressed: () {
-                    themeNotifier.isDark ? themeNotifier.isDark = false : themeNotifier.isDark = true;
-                  })
-            ],
-          ),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+            const Divider(
+              height: 60,
+            ),
+            Row(
               children: [
-                ValueListenableBuilder(
-                    valueListenable: _controller.batteryLevel,
-                    builder: (_, String level, child) {
-                      return Column(
-                        children: [
-                          ElevatedButton(
-                            onPressed: () async => await _controller.getBatteryLevel(),
-                            child: const Text('Nível da bateria', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
-                          ),
-                          Text(level, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
-                        ],
-                      );
-                    }),
-                ElevatedButton(
-                  onPressed: () => NavigatorService.navigatorPage(Routes.auth),
-                  child: const Text('Login', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+                Expanded(
+                  child: Card(
+                    child: ListTile(
+                      onTap: () {},
+                      title: const Text('Login'),
+                      subtitle: const Text('Página de login'),
+                    ),
+                  ),
                 ),
-
-
-                ElevatedButton(
-                  onPressed: () => _controller.getPrintPlataform(),
-                  child: Text('Print da Plataforma', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
-                ),
-                ValueListenableBuilder(
-                    valueListenable: _controller.valuePrintPlataform,
-                    builder: (_, String valuePrint, child) {
-                      return Column(
-                        children: [
-                          Text(valuePrint, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
-                        ],
-                      );
-                    }),
+                Expanded(
+                  child: Card(
+                    child: ListTile(
+                      onTap: () {},
+                      title: const Text('Lista'),
+                      subtitle: const Text('Leitura da API'),
+                    ),
+                  ),
+                )
               ],
             ),
-          ),
-        );
-      },
+          ],
+        ),
+      ),
     );
   }
 }

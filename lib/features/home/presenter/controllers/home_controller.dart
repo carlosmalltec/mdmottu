@@ -5,8 +5,8 @@ class HomeController extends ChangeNotifier {
   static const platform = MethodChannel('samples.flutter.dev/battery');
   static const platformPrint = MethodChannel('samples.flutter.dev/mdprint');
 
-  ValueNotifier<String> batteryLevel = ValueNotifier<String>('Nível da bateria');
-  ValueNotifier<String> valuePrintPlataform = ValueNotifier<String>('');
+  ValueNotifier<String> batteryLevel = ValueNotifier<String>('clique no card');
+  ValueNotifier<String> valuePrintPlataform = ValueNotifier<String>('clique no card');
 
   Future<void> getBatteryLevel() async {
     String valueBatteryLevel;

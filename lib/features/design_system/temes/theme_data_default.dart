@@ -17,7 +17,7 @@ ThemeData themeDataDefault = ThemeData(
     contentPadding: const EdgeInsets.all(10),
     floatingLabelBehavior: FloatingLabelBehavior.always,
     // //Focus no input sem error
-    focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 2, color: ColorsApp.ff277BC0)),
+    focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 2, color: ColorsApp.ff263545)),
     // //Input em modo de bloqueado
     disabledBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ff263545)),
     // //Sem focus, input nao teve evento
@@ -51,7 +51,6 @@ ThemeData themeDataDefault = ThemeData(
       fontStyle: FontStyle.normal,
       height: 1.33,
     ),
-
     ///Para todos textos dos botões
     displayMedium: GoogleFonts.openSans(
       color: ColorsApp.ffFFFFFF,
