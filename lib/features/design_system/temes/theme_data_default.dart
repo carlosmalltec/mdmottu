@@ -17,13 +17,13 @@ ThemeData themeDataDefault = ThemeData(
     contentPadding: const EdgeInsets.all(10),
     floatingLabelBehavior: FloatingLabelBehavior.always,
     // //Focus no input sem error
-    focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ff263545)),
+    focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 2, color: ColorsApp.ff277BC0)),
     // //Input em modo de bloqueado
-    disabledBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ffC21010)),
+    disabledBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ff263545)),
     // //Sem focus, input nao teve evento
-    enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ffC21010)),
+    enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ff263545)),
     // //Borda global aqui
-    border: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ffC21010)),
+    border: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ff263545)),
     // //Com error sem evento, ou seja o focus esta em outro input
     errorBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ffC21010)),
     // //Com error e o focus no input

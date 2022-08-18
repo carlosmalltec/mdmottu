@@ -8,6 +8,7 @@ class ColorsApp {
   static const Color ffCFE8A9 = Color(0xFFCFE8A9);
   static const Color ffFFFFFF = Color(0xFFFFFFFF);
   static const Color ff263545 = Color(0xFF263545);
+  static const Color ff277BC0 = Color(0xFF277BC0);
 
 
   // static MaterialColor primarySwatch = createMaterialColor(blue);

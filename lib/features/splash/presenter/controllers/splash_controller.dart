@@ -5,6 +5,6 @@ class SplashController extends ChangeNotifier {
   
   redirect(BuildContext context) async {
     await Future.delayed(const Duration(seconds: 3));
-    Navigator.pushNamed(context, Routes.home);
+    Navigator.pushNamed(context, Routes.auth);
   }
 }
