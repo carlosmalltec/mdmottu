@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
+import '../../../dependency_injections/service_locator.dart';
 import '../../design_system/colors/colors_app.dart';
 import '../controllers/debug_view_controller.dart';
 import '../models/debug_log_item.dart';
@@ -12,7 +12,7 @@ class ViewLogs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _controller = context.watch<DebugViewController>();
+    final _controller = ServiceLocator().getIt.get<DebugViewController>();
 
     return Scaffold(
       appBar: AppBar(

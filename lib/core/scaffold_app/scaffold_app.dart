@@ -1,5 +1,10 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
+import 'widgets/snack_bar_success.dart';
 
 class ScaffoldApp extends StatefulWidget {
   final PreferredSizeWidget? appBar;
@@ -25,7 +30,7 @@ class ScaffoldApp extends StatefulWidget {
   final bool drawerEnableOpenDragGesture;
   final bool endDrawerEnableOpenDragGesture;
   final String? restorationId;
-  final  Future<bool> Function()? onWillPop;
+  final Future<bool> Function()? onWillPop;
 
   const ScaffoldApp({
     Key? key,
@@ -60,6 +65,27 @@ class ScaffoldApp extends StatefulWidget {
 }
 
 class _ScaffoldAppState extends State<ScaffoldApp> {
+  late StreamSubscription subscription;
+  @override
+  initState() {
+    super.initState();
+    subscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
+      if (result == ConnectivityResult.none) {
+        ScaffoldMessenger.of(context).showSnackBar(snackBarWarning());
+      } else if(result == ConnectivityResult.wifi) {
+        ScaffoldMessenger.of(context).showSnackBar(snackBarSuccess(text: 'sucess_network_wifi'));
+      }else if(result == ConnectivityResult.mobile || result == ConnectivityResult.ethernet) {
+        ScaffoldMessenger.of(context).showSnackBar(snackBarSuccess(text: 'sucess_network_internet'));
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(

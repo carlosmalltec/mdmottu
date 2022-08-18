@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../core/responsive/orientation_layout.dart';
 import '../../../core/responsive/screen_type_layout.dart';
+import '../../../dependency_injections/service_locator.dart';
 import 'controllers/home_controller.dart';
 import 'pages/home_phone.dart';
 
@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeController controller = context.watch<HomeController>();
+    HomeController controller = ServiceLocator().getIt.get<HomeController>();
 
     return ScreenTypeLayout(
       mobile: OrientationLayout(

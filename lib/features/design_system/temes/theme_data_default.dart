@@ -5,11 +5,12 @@ import 'package:mdmottu/features/design_system/colors/colors_app.dart';
 ThemeData themeDataDefault = ThemeData(
   fontFamily: GoogleFonts.openSans().fontFamily,
   scaffoldBackgroundColor: Colors.grey.shade300,
-  primaryColor: ColorsApp.ff222E50,
+  primaryColor: ColorsApp.ffFF7C7C,
   colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: ColorsApp.createMaterialColor(ColorsApp.ff222E50),
+    primarySwatch: ColorsApp.createMaterialColor(ColorsApp.ffFF7C7C),
   ).copyWith(
-    secondary: ColorsApp.ffC21010,
+    secondary: ColorsApp.ffFF7C7C,
+    primary: ColorsApp.ffFF7C7C,
   ),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
@@ -17,13 +18,13 @@ ThemeData themeDataDefault = ThemeData(
     contentPadding: const EdgeInsets.all(10),
     floatingLabelBehavior: FloatingLabelBehavior.always,
     // //Focus no input sem error
-    focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ff263545)),
+    focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 2, color: ColorsApp.ff263545)),
     // //Input em modo de bloqueado
-    disabledBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ffC21010)),
+    disabledBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ff263545)),
     // //Sem focus, input nao teve evento
-    enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ffC21010)),
+    enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ff263545)),
     // //Borda global aqui
-    border: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ffC21010)),
+    border: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ff263545)),
     // //Com error sem evento, ou seja o focus esta em outro input
     errorBorder: const UnderlineInputBorder(borderSide: BorderSide(width: 1, color: ColorsApp.ffC21010)),
     // //Com error e o focus no input
@@ -35,15 +36,14 @@ ThemeData themeDataDefault = ThemeData(
     helperMaxLines: 5,
     errorMaxLines: 5,
   ),
-
-  ///2021
-  ///displayLarge, displayMedium, displaySmall
-// headlineMedium, headlineSmall
-// titleLarge, titleMedium, titleSmall
-// bodyLarge, bodyMedium, bodySmall
-// labelLarge, labelSmall
-
   textTheme: TextTheme(
+    titleLarge: GoogleFonts.openSans(
+      color: ColorsApp.ff263545,
+      fontSize: 20,
+      fontWeight: FontWeight.w700,
+      fontStyle: FontStyle.normal,
+      height: 1.55,
+    ),
     titleMedium: GoogleFonts.openSans(
       color: ColorsApp.ff263545,
       fontSize: 17,

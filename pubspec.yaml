@@ -16,9 +16,11 @@ dependencies:
   dartz: ^0.10.1
   equatable: ^2.0.3
   dio: ^4.0.6
-  provider: ^6.0.3
   google_fonts: ^3.0.1
   shared_preferences: ^2.0.15
+  connectivity_plus: ^2.3.6+1
+  get_it: ^7.2.0
+  shimmer: ^2.0.0
 
   cupertino_icons: ^1.0.2
 

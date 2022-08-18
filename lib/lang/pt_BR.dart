@@ -8,4 +8,13 @@ const Map<String, String> pt_BR = {
   "pass_label": "Senha",
   "required_field": "Campo obrigatório",
   "mail_invalid": "Informe um e-mail valido!",
+  "failure_network": "Problemas de conexão a internet.",
+  "sucess_network": "Conexão com a internet estabelecida.",
+  "sucess_network_wifi": "Conexão com o Wifi estabelecida.",
+  "sucess_network_internet": "Conexão com os dados móveis estabelecida.",
+  "failure_status_message": "Oops! No momento o servidor encontra-se em manutenção, aguarde...",
+  "not_hash_data": "Oops! Nenhum dado encontrado, tente novamente!",
+  "title_page_personal": "Lista de personagens",
+  "message_list_all_items": "Todos os itens já foram listados",
+  "message_problem_list_data_server": "No momento não será possível listar os dados da requisição, tente novamente!",
 };

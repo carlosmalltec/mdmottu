@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:mdmottu/dependency_injections/service_locator.dart';
 
 import '../../../core/responsive/orientation_layout.dart';
 import '../../../core/responsive/screen_type_layout.dart';
@@ -11,7 +11,7 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthController controller = context.watch<AuthController>();
+    AuthController controller = ServiceLocator().getIt.get<AuthController>();
 
     return ScreenTypeLayout(
       mobile: OrientationLayout(
