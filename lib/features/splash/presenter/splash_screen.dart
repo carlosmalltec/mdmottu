@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../core/responsive/orientation_layout.dart';
 import '../../../core/responsive/screen_type_layout.dart';
+import '../../../dependency_injections/service_locator.dart';
 import 'controllers/splash_controller.dart';
 import 'pages/splash_phone.dart';
 
@@ -11,7 +11,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      SplashController controller = context.watch<SplashController>();
+      SplashController controller = ServiceLocator().getIt.get<SplashController>();
 
     return ScreenTypeLayout(
       mobile: OrientationLayout(

@@ -5,11 +5,9 @@ import 'package:mdmottu/core/scaffold_app/scaffold_app.dart';
 import 'package:mdmottu/features/auth/domain/entities/request_auth.dart';
 import 'package:mdmottu/features/design_system/colors/colors_app.dart';
 import 'package:mdmottu/lang/app_translation.dart';
-import 'package:provider/provider.dart';
 
 import '../../../../core/component_form/button_app.dart';
 import '../../../../core/validator_form/validators.dart';
-import '../../../debug_view/controllers/debug_view_controller.dart';
 import '../controllers/auth_controller.dart';
 import '../widgets/box_text_helper.dart';
 
@@ -42,7 +40,6 @@ class _AuthPhoneState extends State<AuthPhone> {
 
   @override
   Widget build(BuildContext context) {
-    var debugViewController = Provider.of<DebugViewController>(context);
     return ScaffoldApp(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -73,32 +70,37 @@ class _AuthPhoneState extends State<AuthPhone> {
                   Validators.email(),
                 ]),
               ),
-              InputField(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                maxLength: 20,
-                controller: passEC,
-                focusNode: passFN,
-                labelText: AppTranslationString.string('pass_label'),
-                hintText: AppTranslationString.string('pass_hint'),
-                keyboardType: TextInputType.visiblePassword,
-                textInputAction: TextInputAction.done,
-                obscureText: !_controller.visiblePassword.value,
-                visibleSuffixIcon: true,
-                enabled: !_controller.loading.value,
-                suffixIconWidget: Visibility(
-                  visible: _controller.visiblePassword.value,
-                  replacement: const Icon(Icons.visibility_off_outlined, color: ColorsApp.ff222E50),
-                  child: const Icon(Icons.visibility_outlined, color: ColorsApp.ff222E50),
-                ),
-                onPressedSuffixIcon: () => _controller.visiblePasswordShow(),
-                onSaved: (data) {
-                  if (data != null) {
-                    requestAuth = requestAuth.copyWith(password: data.toLowerCase());
-                  }
+              AnimatedBuilder(
+                animation: _controller,
+                builder: (BuildContext context, Widget? widget) {
+                  return InputField(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    maxLength: 20,
+                    controller: passEC,
+                    focusNode: passFN,
+                    labelText: AppTranslationString.string('pass_label'),
+                    hintText: AppTranslationString.string('pass_hint'),
+                    keyboardType: TextInputType.visiblePassword,
+                    textInputAction: TextInputAction.done,
+                    obscureText: !_controller.visiblePassword.value,
+                    visibleSuffixIcon: true,
+                    enabled: !_controller.loading.value,
+                    suffixIconWidget: Visibility(
+                      visible: _controller.visiblePassword.value,
+                      replacement: const Icon(Icons.visibility_off_outlined, color: ColorsApp.ff222E50),
+                      child: const Icon(Icons.visibility_outlined, color: ColorsApp.ff222E50),
+                    ),
+                    onPressedSuffixIcon: () => _controller.visiblePasswordShow(),
+                    onSaved: (data) {
+                      if (data != null) {
+                        requestAuth = requestAuth.copyWith(password: data.toLowerCase());
+                      }
+                    },
+                    validator: Validators.multiple([
+                      Validators.required(),
+                    ]),
+                  );
                 },
-                validator: Validators.multiple([
-                  Validators.required(),
-                ]),
               ),
               const SizedBox(height: 20),
               const BoxTextHelper(text: 'Login: ', description: 'teste@teste.com'),
@@ -117,7 +119,7 @@ class _AuthPhoneState extends State<AuthPhone> {
                                   var formValid = _formKey.currentState?.validate() ?? false;
                                   if (formValid) {
                                     _formKey.currentState?.save();
-                                    await _controller.signIn(requestAuth, debugViewController);
+                                    await _controller.signIn(requestAuth);
                                   }
                                 },
                           childRaisedButton: Visibility(

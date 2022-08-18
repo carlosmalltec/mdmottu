@@ -8,4 +8,8 @@ const Map<String, String> pt_BR = {
   "pass_label": "Senha",
   "required_field": "Campo obrigatório",
   "mail_invalid": "Informe um e-mail valido!",
+  "failure_network": "Problemas de conexão a internet.",
+  "sucess_network": "Conexão com a internet estabelecida.",
+  "sucess_network_wifi": "Conexão com o Wifi estabelecida.",
+  "sucess_network_internet": "Conexão com os dados móveis estabelecida.",
 };

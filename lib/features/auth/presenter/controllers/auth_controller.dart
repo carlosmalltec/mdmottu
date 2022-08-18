@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:mdmottu/core/navigation_state/navigator_service.dart';
 import 'package:mdmottu/routes/app_pages.dart';
-import 'package:provider/provider.dart';
 
 import '../../../debug_view/controllers/debug_view_controller.dart';
 import '../../../debug_view/models/debug_log_item.dart';
 import '../../domain/entities/request_auth.dart';
 
 class AuthController extends ChangeNotifier {
-  // final DebugViewController debugViewController;
+  final DebugViewController debugViewController;
 
-  // AuthController(this.debugViewController);
+  AuthController(this.debugViewController);
 
   final ValueNotifier<bool> visiblePassword = ValueNotifier<bool>(false);
   final ValueNotifier<bool> loading = ValueNotifier<bool>(false);
@@ -20,7 +19,7 @@ class AuthController extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> signIn(RequestAuth data, DebugViewController debugViewController) async {
+  Future<void> signIn(RequestAuth data) async {
     var item = DebugLogItem(
       dataPost: data.toMap().toString(),
       baseUrl: 'https://teste.com',

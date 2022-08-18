@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mdmottu/core/scaffold_app/scaffold_app.dart';
 import 'package:mdmottu/core/theme_preference/theme_model.dart';
 import 'package:mdmottu/features/design_system/colors/colors_app.dart';
-import 'package:provider/provider.dart';
 
+import '../../../../dependency_injections/service_locator.dart';
 import '../controllers/home_controller.dart';
 
 class HomePhone extends StatefulWidget {
@@ -17,6 +17,7 @@ class HomePhone extends StatefulWidget {
 
 class _HomePhoneState extends State<HomePhone> {
   HomeController get _controller => widget.controller;
+  final ThemeModel themeModel = ServiceLocator().getIt.get<ThemeModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +30,13 @@ class _HomePhoneState extends State<HomePhone> {
         centerTitle: true,
         leading: Container(),
         actions: [
-          Consumer<ThemeModel>(
-            builder: (context, ThemeModel themeNotifier, child) {
+          AnimatedBuilder(
+            animation: themeModel,
+            builder: (BuildContext context, Widget? widget) {
               return IconButton(
-                icon: Icon(themeNotifier.isDark ? Icons.nightlight_round : Icons.wb_sunny),
+                icon: Icon(themeModel.isDark ? Icons.nightlight_round : Icons.wb_sunny),
                 onPressed: () {
-                  themeNotifier.isDark ? themeNotifier.isDark = false : themeNotifier.isDark = true;
+                  themeModel.isDark ? themeModel.isDark = false : themeModel.isDark = true;
                 },
               );
             },
@@ -71,9 +73,20 @@ class _HomePhoneState extends State<HomePhone> {
                 );
               },
             ),
-            const Divider(
-              height: 60,
+            const Divider(height: 30),
+            Row(
+              children: const [
+                Expanded(
+                  child: Card(
+                    child: ListTile(
+                      title: Text('Teste de internet'),
+                      subtitle: Text('Altere para modo de avião e ligue novamente!'),
+                    ),
+                  ),
+                ),
+              ],
             ),
+            const Divider(height: 30),
             Row(
               children: [
                 Expanded(
